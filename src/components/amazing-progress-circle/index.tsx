@@ -9,6 +9,7 @@ const ProgressCircle: React.FC<T.ComponentProps> = ({
   onCompletion,
 }) => {
   const fixedPercentage = percentage > 100 ? 100 : percentage;
+  const isCompleted = fixedPercentage === 100;
   const circleSize = 16;
   const commonTags = {
     cx: circleSize,
@@ -18,7 +19,7 @@ const ProgressCircle: React.FC<T.ComponentProps> = ({
   };
   const fillerStyle = {
     strokeDashoffset: 100 - fixedPercentage,
-    stroke: fixedPercentage === 100 ? C.success : C.primary,
+    stroke: isCompleted ? C.success : C.primary,
   };
   const ringStyles = {
     width: size,
@@ -28,7 +29,7 @@ const ProgressCircle: React.FC<T.ComponentProps> = ({
   };
 
   useEffect(() => {
-    if (fixedPercentage === 100 && onCompletion) {
+    if (isCompleted && onCompletion) {
       onCompletion();
     }
   }, [fixedPercentage]);
@@ -44,7 +45,7 @@ const ProgressCircle: React.FC<T.ComponentProps> = ({
         />
       </S.Ring>
       <S.RingText>
-        {fixedPercentage === 100 ? (
+        {isCompleted ? (
           <S.Completion data-testid="completion">✔</S.Completion>
         ) : (
           <S.Percentage>{fixedPercentage}%</S.Percentage>
