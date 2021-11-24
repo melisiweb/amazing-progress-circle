@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import * as S from './styles';
 import * as T from './types';
 import * as C from '../../colors';
 
-export const AmazingProgressCircle: React.FC<T.ComponentProps> = ({
+const ProgressCircle: React.FC<T.ComponentProps> = ({
   size = 170,
   percentage = 0,
   onCompletion,
@@ -53,3 +53,5 @@ export const AmazingProgressCircle: React.FC<T.ComponentProps> = ({
     </S.Wrapper>
   );
 };
+
+export const AmazingProgressCircle = memo(ProgressCircle);
