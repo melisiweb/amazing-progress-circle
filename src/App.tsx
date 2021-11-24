@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { AmazingProgressCircle } from './components/amazing-progress-circle';
 
 function App() {
+  const [percentage, setPercentage] = useState(0);
+  const onClick = () => {
+    setPercentage(percentage + 10);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Amazing Progress Circle </h1>
+      <AmazingProgressCircle
+        size={170}
+        percentage={percentage}
+        onCompletion={() => console.log('Miao 🐱')}
+      />
+      <button data-testid="increment-button" onClick={onClick}>
+        Increment
+      </button>
     </div>
   );
 }
