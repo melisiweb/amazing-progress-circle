@@ -37,6 +37,13 @@ describe('AmazingProgressCircle', () => {
     });
   });
 
+  test('cannot render with 110%', () => {
+    render(<AmazingProgressCircle percentage={110} />);
+
+    expect(screen.queryByText(/110%/i)).not.toBeInTheDocument();
+    expect(screen.queryByTestId('completion')).toBeInTheDocument();
+  });
+
   test('executes on completion callback', () => {
     const onCompletion = jest.fn();
 
