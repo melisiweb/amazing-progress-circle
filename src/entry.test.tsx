@@ -1,15 +1,15 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import App from './app';
+import { Entry } from './entry';
 
-describe('App', () => {
+describe('Entry', () => {
   test('renders', () => {
-    render(<App />);
+    render(<Entry />);
     expect(screen.queryByText(/Amazing Progress Circle/i)).toBeInTheDocument();
     expect(screen.queryByTestId('amazing-progress-circle')).toBeInTheDocument();
   });
 
   test('increment button shows new percentage', () => {
-    render(<App />);
+    render(<Entry />);
 
     fireEvent.click(screen.getByTestId('increment-button'));
 
@@ -17,7 +17,7 @@ describe('App', () => {
   });
 
   test('auto increment and stop', async () => {
-    render(<App />);
+    render(<Entry />);
 
     fireEvent.click(screen.getByTestId('auto-increment-button'));
 

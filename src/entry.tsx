@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AmazingProgressCircle } from './components/amazing-progress-circle';
 
-function App() {
+export const Entry: React.FC = () => {
   const [percentage, setPercentage] = useState(0);
   const [isAutoIncrement, setIsAutoIncrement] = useState<number>();
   const onClick = () => {
@@ -59,6 +59,4 @@ function App() {
       </button>
     </div>
   );
-}
-
-export default App;
+};
